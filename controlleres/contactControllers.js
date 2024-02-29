@@ -13,6 +13,12 @@ const getContacts = (req,res) =>{
 // @access public
 
 const postContact = (req,res) =>{
+    console.log("this is the body part of post contact ",req.body);
+    const {name,email,phone} = req.body;
+    if(!name || !email || !phone){
+        res.status(400);
+        throw new Error("All the feilds are mandatorey");
+    }
     res.status(201).json({
         message : "post all the contatcs"
     });
